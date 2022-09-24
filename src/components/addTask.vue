@@ -2,9 +2,17 @@
   <div id="taskForm">
     <form>
       <input v-model="taskTitle" placeholder="Titulo de la tarea" />
-      <textarea v-model="mensaje" placeholder="Descripcion tarea a realizar"></textarea>
+      <textarea
+        v-model="mensaje"
+        placeholder="Descripcion tarea a realizar"
+      ></textarea>
     </form>
-    <button @click="insertar">test patata</button>
+
+    <button v-if="tarea == false" @click="insertar">test insertar</button>
+    <button v-else @click="modificarTask(taskTitle, mensaje, tarea)">
+      test modificar
+    </button>
+    {{ tarea }}
     {{ mensaje }}
   </div>
 </template>
@@ -13,7 +21,9 @@ import { supabase } from "../supabase";
 import { store } from "../store";
 export default {
   name: "taskForm",
-  props: {}, // Props
+  props: {
+    tarea: false,
+  }, // Props
   data() {
     return {
       mensaje: "",
@@ -22,6 +32,27 @@ export default {
   }, // Data variables
   computed: {}, // Computed props
   methods: {
+    async borrarTask(taskTitle, mensaje, tarea) {
+      console.log(taskTitle);
+      console.log(mensaje);
+      console.log(tarea);
+      console.log("terea ejecutada");
+      const { data, error } = await supabase
+        .from("tasks")
+        .delete()
+        .eq("id", "47");
+    },
+    async modificarTask(taskTitle, mensaje, tarea) {
+      console.log(taskTitle);
+      console.log(mensaje);
+      console.log(tarea);
+      console.log("terea modificar ejecutada");
+      const { data, error } = await supabase
+        .from("tasks")
+        .update({ tittle: "111", comment:"222ent" })
+        .eq("idd", "49");
+        console.log(error)
+    },
     async insertar() {
       const { data, error } = await supabase.from("tasks").insert([
         {

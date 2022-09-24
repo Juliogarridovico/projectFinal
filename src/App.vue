@@ -1,11 +1,13 @@
 <template>
+  
+  <p>Count: {{ count }}</p>
   <div class="container" style="padding: 50px 0 100px 0">
     <Profile v-if="store.user" />
     <Auth v-else />
     <!-- <button @click="insertar">test patata</button> -->
   </div>
-  <AddTask></AddTask>
-  <dashboard></dashboard>
+  <AddTask :tarea="modificar"></AddTask>
+  <dashboard @estoEsElNombreDelEmit="creoElMetodo"  ></dashboard>
 </template>
 
 <script>
@@ -17,13 +19,22 @@ import AddTask from "./components/addTask.vue";
 import Dashboard from "./components/dashboard.vue";
 
 export default {
+  data(){
+    return{
+      modificar: false 
+    }
+  },
   components: {
     Auth,
     Profile,
     AddTask,
     Dashboard,
   },
-  method() {},
+  methods:{
+    creoElMetodo(parametro){
+     this.modificar = parametro
+    }
+  },
 
   mounted() {},
   setup() {

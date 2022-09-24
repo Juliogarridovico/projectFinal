@@ -3,13 +3,14 @@
   <div id="dashboard">
     <button @click="consultarDashboard">test consulta</button>
     <div id="porHacer">
-      <!-- {{tareas.filter(tareas.statusTask =1)}} -->
+      
       <ul>
         <li
           v-for="tarea in tareas.filter((test) => test.statusTask === 1)"
           :key="tarea.id"
         >
-          {{ tarea }}
+          <!-- {{ tarea }} <button @click="modificarTask(tarea.id)">modificar</button> -->
+          {{ tarea }}<button @click="emitID(tarea)">  emmit id</button>
         </li>
       </ul>
     </div>
@@ -21,6 +22,7 @@
           :key="tarea.id"
         >
           {{ tarea }}
+         
         </li>
       </ul>
     </div>
@@ -52,6 +54,12 @@ export default {
   }, // Data variables
   computed: {}, // Computed props
   methods: {
+    emitID(array){
+      this.$emit("estoEsElNombreDelEmit", array)
+    },
+    modificarTask(a){
+      console.log(a)
+    },
     async consultarDashboard() {
       let { data: tasks, error } = await supabase
         .from("tasks")
@@ -78,5 +86,10 @@ export default {
     console.log(store.user.id);
     this.consultarDashboard();
   }, // Mounted hook (lifecycle)
+  watch:{
+    msg: function(){
+      this.$root.$emit("send", "hola")
+    }
+  },
 };
 </script>
