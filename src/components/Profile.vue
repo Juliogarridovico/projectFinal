@@ -24,7 +24,7 @@
     </div>
 
     <div>
-      <button class="button block" @click="signOut" :disabled="loading">
+      <button class="button block btn btn-danger3" @click="signOut" :disabled="loading">
         Sign Out
       </button>
     </div>
