@@ -1,27 +1,4 @@
 <template>
-  <div>PRUEBA</div>
-  <!-- <form class="row flex flex-center" @submit.prevent="handleLogin">
-    <div class="col-6 form-widget">
-      <h1 class="header">Supabase + Vue 3</h1>
-      <p class="description">Sign in via magic link with your email below</p>
-      <div>
-        <input
-          class="inputField"
-          type="email"
-          placeholder="Your email"
-          v-model="email"
-        />
-      </div>
-      <div>
-        <input
-          type="submit"
-          class="button block btn-danger btn"
-          :value="loading ? 'Loading' : 'Send magic link'"
-          :disabled="loading"
-        />
-      </div>
-    </div>
-  </form> -->
 
   <div class="container">
     <div class="row justify-content-center align-items-center row-style">
@@ -59,7 +36,7 @@
               alt="Logo"
             />
           </div>
-          <div class="w-100 mb-3">
+          <div class="inputField w-100 mb-3">
             <input
               type="email"
               class="form-control rounded-5 input-style"
