@@ -26,21 +26,19 @@ export default {
   }, // Props
   data() {
     return {
-      mensaje: "",
-      tittle: "",
+      mensaje: this.tarea.comment,
+
+      taskTitle: this.tarea.tittle,
     };
   }, // Data variables
-  computed: {}, // Computed props
+  computed: {}, // Computed propss
   methods: {
     async borrarTask(taskTitle, mensaje, tarea) {
-      console.log(taskTitle);
-      console.log(mensaje);
-      console.log(tarea);
       console.log("terea ejecutada");
       const { data, error } = await supabase
         .from("tasks")
         .delete()
-        .eq("id", "47");
+        .eq("id", "this.tarea.id");
     },
     async modificarTask(taskTitle, mensaje, tarea) {
       console.log(taskTitle);
@@ -49,9 +47,9 @@ export default {
       console.log("terea modificar ejecutada");
       const { data, error } = await supabase
         .from("tasks")
-        .update({ tittle: "111", comment:"222ent" })
-        .eq("idd", "49");
-        console.log(error)
+        .update({ tittle: this.taskTitle, comment: this.mensaje })
+        .eq("id", this.tarea.id);
+      console.log(error);
     },
     async insertar() {
       const { data, error } = await supabase.from("tasks").insert([
@@ -77,3 +75,11 @@ export default {
   mounted() {}, // Mounted hook (lifecycle)
 };
 </script>
+
+
+
+<style scoped>
+* {
+  background: #000;
+}
+</style>
