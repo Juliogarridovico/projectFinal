@@ -1,19 +1,18 @@
 <template>
   <div id="taskForm">
     <form>
-      <input v-model="taskTitle" placeholder="Titulo de la tarea" />
+      <input v-model="this.tarea.tittle" placeholder="Titulo de la tarea" />
       <textarea
-        v-model="mensaje"
+        v-model="this.tarea.comment"
         placeholder="Descripcion tarea a realizar"
       ></textarea>
     </form>
 
-    <button v-if="tarea == false" @click="insertar">test insertar</button>
-    <button v-else @click="modificarTask(taskTitle, mensaje, tarea)">
+    <button   @click="insertar">test insertar</button>
+    <button @click="modificarTask(taskTitle, mensaje, tarea)">
       test modificar
     </button>
-    {{ tarea }}
-    {{ mensaje }}
+   yyyyyyyyyy {{ tarea.id }}
   </div>
 </template>
   <script>
@@ -22,8 +21,8 @@ import { store } from "../store";
 export default {
   name: "taskForm",
   props: {
-    tarea: false,
-  }, // Props
+    tarea: {},
+  }, // Propss
   data() {
     return {
       mensaje: this.tarea.comment,
@@ -47,7 +46,7 @@ export default {
       console.log("terea modificar ejecutada");
       const { data, error } = await supabase
         .from("tasks")
-        .update({ tittle: this.taskTitle, comment: this.mensaje })
+        .update({ tittle: this.tarea.tittle, comment: this.tarea.comment })
         .eq("id", this.tarea.id);
       console.log(error);
     },
@@ -55,13 +54,15 @@ export default {
       const { data, error } = await supabase.from("tasks").insert([
         {
           usuarioID: this.store.user.id,
-          tittle: this.taskTitle,
-          comment: this.mensaje,
+          tittle: this.tarea.tittle,
+          comment: this.tarea.comment,
           statusTask: 3,
         },
       ]);
+      console.log("insertar")
+      console.log(this.tarea.comment)
     },
-  }, // Functions
+  }, 
   setup() {
     store.user = supabase.auth.user();
     supabase.auth.onAuthStateChange((_, session) => {
@@ -79,7 +80,7 @@ export default {
 
 
 <style scoped>
-* {
-  background: #000;
+textarea{
+  color: black;
 }
 </style>

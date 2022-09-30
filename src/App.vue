@@ -21,7 +21,9 @@ import Dashboard from "./components/dashboard.vue";
 export default {
   data(){
     return{
-      modificar: false 
+      modificar: {
+        
+      } 
     }
   },
   components: {
@@ -32,7 +34,10 @@ export default {
   },
   methods:{
     creoElMetodo(parametro){
-     this.modificar = parametro
+      this.modificar =  parametro
+      console.log(this.modificar)
+
+
     }
   },
 

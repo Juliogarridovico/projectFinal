@@ -21,7 +21,7 @@
           v-for="tarea in tareas.filter((test) => test.statusTask === 2)"
           :key="tarea.id"
         >
-          {{ tarea }}
+        {{ tarea }}<button @click="emitID(tarea)">  emmit id</button>
          
         </li>
       </ul>
@@ -33,7 +33,7 @@
           v-for="tarea in tareas.filter((test) => test.statusTask === 3)"
           :key="tarea.id"
         >
-          {{ tarea }}
+        {{ tarea }}<button @click="emitID(tarea)">  emmit id</button>
         </li>
       </ul>
     </div>
@@ -97,5 +97,8 @@ export default {
 <style scoped>
   *{
 color: #212529;
+  }
+  button{
+  background-color: aliceblue;
   }
 </style>
