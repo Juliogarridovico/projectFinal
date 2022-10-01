@@ -1,5 +1,5 @@
 <template>
-  
+  <navbar></navbar>
   <p>Count: {{ count }}</p>
   <div class="container" style="padding: 50px 0 100px 0">
     <Profile v-if="store.user" />
@@ -17,6 +17,7 @@ import Auth from "./components/Auth.vue";
 import Profile from "./components/Profile.vue";
 import AddTask from "./components/addTask.vue";
 import Dashboard from "./components/dashboard.vue";
+import navbar from "./components/navbar.vue";
 
 export default {
   data(){
@@ -29,6 +30,7 @@ export default {
     Profile,
     AddTask,
     Dashboard,
+    navbar,
   },
   methods:{
     creoElMetodo(parametro){
