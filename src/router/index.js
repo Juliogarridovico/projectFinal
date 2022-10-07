@@ -19,6 +19,7 @@ const routes = [
   { path: "/contactus", component: () => import("../components/contactus.vue") },
   { path: "/homePage", component: () => import("../components/HomePage.vue") },
   { path: "/aboutus", component: () => import("../components/aboutus.vue") },
+  { path: "/dashboard-two", component: () => import("../components/DashBoardTwo.vue") },
   
 ];
 
