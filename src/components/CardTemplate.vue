@@ -11,7 +11,7 @@
     <div class="card mb-4 card-border-style shadow-sm">
       <div class="card-body">
         <div class="row card-title-edit">
-          <h5 class="col-6 card-title">Task title</h5>
+          <h5 class="col-6 card-title">{{tareaInfo.tittle}}</h5>
           <button
             class="col-6 edit-button rounded-3 d-flex justify-content-end me-0"
             title="edit Task"
@@ -28,7 +28,7 @@
         </div>
 
         <p class="card-text card-text-syle mt-3">
-          Lorem ipsum dolor sit amet consectetur
+         {{tareaInfo.comment}}
         </p>
 
         <div class="row justify-content-between">
@@ -73,8 +73,9 @@
 </template>
 
 <script>
+
 export default {
-  props: ["id", "draggable"],
+  props: ["id", "draggable", "tareaInfo", "tareas"],
   methods: {
     dragStart: (e) => {
       const target = e.target;

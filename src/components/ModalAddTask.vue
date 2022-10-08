@@ -12,7 +12,8 @@
               <input
                 type="text"
                 class="form-control rounded-5 input-style"
-                id="usuario"
+                id=""
+                 v-model="taskTitle"
                 placeholder="Title of task"
               />
               <textarea
@@ -22,6 +23,7 @@
                 cols="40"
                 rows="10"
                 placeholder="Description"
+                 v-model="description"
               ></textarea>
               <label class="textarea-style mt-2" for="dead-line"
                 >Deadline</label
@@ -34,7 +36,7 @@
               />
               <div class="row justify-content-center">
                 <button
-                  v-if="tarea == false"
+                  
                   @click="insertar"
                   type="submit"
                   class="col-12 btn btn-style btn-primary rounded-5 w-50 mt-3 mx-1"
@@ -42,8 +44,8 @@
                   Save
                 </button>
                 <button
-                  v-else
-                  @click="modificarTask(taskTitle, mensaje, tarea)"
+                
+                  @click="modificarTask(taskTitle, description, tarea)"
                   class="col-12 btn btn-style btn-primary rounded-5 w-50 mt-3 mx-1"
                 >
                   test modificar
@@ -74,15 +76,15 @@ export default {
   }, // Props
   data() {
     return {
-      mensaje: "",
-      tittle: "",
+      description: "",
+      taskTitle: "",
     };
   }, // Data variables
   computed: {}, // Computed props
   methods: {
-    async borrarTask(taskTitle, mensaje, tarea) {
+    async borrarTask(taskTitle, description, tarea) {
       console.log(taskTitle);
-      console.log(mensaje);
+      console.log(description);
       console.log(tarea);
       console.log("terea ejecutada");
       const { data, error } = await supabase
@@ -90,9 +92,9 @@ export default {
         .delete()
         .eq("id", "47");
     },
-    async modificarTask(taskTitle, mensaje, tarea) {
+    async modificarTask(taskTitle, description, tarea) {
       console.log(taskTitle);
-      console.log(mensaje);
+      console.log(description);
       console.log(tarea);
       console.log("terea modificar ejecutada");
       const { data, error } = await supabase
@@ -106,7 +108,7 @@ export default {
         {
           usuarioID: this.store.user.id,
           tittle: this.taskTitle,
-          comment: this.mensaje,
+          comment: this.description,
           statusTask: 3,
         },
       ]);
