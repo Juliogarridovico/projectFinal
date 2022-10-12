@@ -14,7 +14,7 @@
                   type="text"
                   class="form-control rounded-5 input-style"
                   id="usuario"
-                  placeholder="Title of task"
+                  :placeholder="tareaEditar.tittle"
                 />
                 <textarea
                   class="form-control rounded-2 textarea-style mt-2"
@@ -57,7 +57,16 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    tareaEditar: {
+    }
+  },
+  mounted(){
+    console.log(this.tareaEditar)
+    
+  }
+};
 </script>
 
 <style scoped>

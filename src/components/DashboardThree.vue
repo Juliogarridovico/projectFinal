@@ -1,59 +1,110 @@
 <template>
-  {{ tarea }}
-  <div id="dashboard">
-    <button @click="consultarDashboard">test consulta</button>
-    <div id="porHacer">
-      
-      <ul>
-        <li
-          v-for="tarea in tareas.filter((test) => test.statusTask === 1)"
-          :key="tarea.id"
-        >
-          <!-- {{ tarea }} <button @click="modificarTask(tarea.id)">modificar</button> -->
-          <card-template :tarea-info="{}"  draggable="true"/>
-          <button @click="emitID(tarea)">  emmit id</button>
-        </li>
-      </ul>
+  <main class="container-fliud dashboard-main">
+    <!-- Modal Add task -->
+
+    <!-- BOTON AGREGAR TASK -->
+
+          <button
+        class="me-1 mt-2 mb-2"
+        data-bs-toggle="modal"
+        data-bs-target="#addingTask"
+      >
+        <span>Add Task <i class="far fa-plus-square"></i></span>
+      </button>
+
+    <ModalAddTask />
+
+
+    <div class="row justify-content-center justify-content-md-between m-0">
+      <div
+        class="d-none d-md-block col-md-1 col-lg-1 border bg-danger vh-100 column-red"
+      >
+        3
+      </div>
+      <div class="col-12 col-md-10 p-0 m-0 h-100">
+        <div class="mt-4 mb-3 text-center">
+          <h2 class="board-h2">BOARD</h2>
+          <hr />
+        </div>
+        <div class="row mx-0 col-12 justify-content-center">
+          <BoardTemplate columnName="Backlog" id="0">
+            <div
+              v-for="tarea in tareas.filter((test) => test.statusTask === 0)"
+              :key="tarea.id"
+            >
+              <card-template
+                :id="tarea.id"
+                :tarea-info="tarea"
+                draggable="true"
+              >
+                  <!-- Modal Edit Task -->
+                  <slot>
+                      <ModalEditTask :tareaEditar="tarea"/>
+                  </slot>
+                
+
+              </card-template>
+            </div>
+          </BoardTemplate>
+
+          <BoardTemplate columnName="To Do" id="1">
+            <div
+              v-for="tarea in tareas.filter((test) => test.statusTask === 1)"
+              :key="tarea.id"
+            >
+              <card-template
+                :id="tarea.id"
+                :tarea-info="tarea"
+                draggable="true"
+              />
+            </div>
+          </BoardTemplate>
+
+          <BoardTemplate columnName="Doing" id="2">
+            <div
+              v-for="tarea in tareas.filter((test) => test.statusTask === 2)"
+              :key="tarea.id"
+            >
+              <card-template
+                :id="tarea.id"
+                :tarea-info="tarea"
+                draggable="true"
+              />
+            </div>
+          </BoardTemplate>
+
+          <BoardTemplate columnName="Done" id="3">
+            <div
+              v-for="tarea in tareas.filter((test) => test.statusTask === 3)"
+              :key="tarea.id"
+            >
+              <card-template
+                :id="tarea.id"
+                :tarea-info="tarea"
+                draggable="true"
+              />
+            </div>
+          </BoardTemplate>
+        </div>
+      </div>
     </div>
-    <div id="enCurso">
-      porHacer
-      <ul>
-        <li
-          v-for="tarea in tareasEnCurso"
-          :key="tarea.id"
-        >
-        
-          <card-template :tarea-info="{}"  draggable="true"/>
-         
-        </li>
-      </ul>
-    </div>
-    <div id="finalizado">
-      finalizado
-      <ul>
-        <li
-          v-for="tarea in tareas.filter((test) => test.statusTask === 3)"
-          :key="tarea.id"
-        >
-          <card-template :tarea-info="tarea" draggable="true"/>
-        </li>
-      </ul>
-    </div>
-  </div>
+  </main>
 </template>
-    <script>
+<script>
 import { supabase } from "../supabase";
 import { store } from "../store";
-import CardTemplate from "./CardTemplate.vue";
 import BoardTemplate from "./BoardTemplate.vue";
-
-
+import CardTemplate from "./CardTemplate.vue";
+import ModalEditTask from "./ModalEditTask.vue";
+import ModalAddTask from "./ModalAddTask.vue";
 
 export default {
   name: "dashboard",
-  components:{
+  components: {
+    BoardTemplate,
     CardTemplate,
-    BoardTemplate
+    ModalEditTask,
+    ModalAddTask,
   },
   props: {}, // Props
   data() {
@@ -64,16 +115,20 @@ export default {
     };
   }, // Data variables
   computed: {
-    tareasEnCurso(){
-        return this.tareas.filter((test) => test.statusTask === 2)
-    }
+    tareasEnCurso() {
+      return this.tareas.filter((test) => test.statusTask === 2);
+    },
+
+    idUnico() {
+      console.log("TEST DE ID UNICO");
+    },
   }, // Computed props
   methods: {
-    emitID(array){
-      this.$emit("estoEsElNombreDelEmit", array)
+    emitID(array) {
+      this.$emit("estoEsElNombreDelEmit", array);
     },
-    modificarTask(a){
-      console.log(a)
+    modificarTask(a) {
+      console.log(a);
     },
     async consultarDashboard() {
       let { data: tasks, error } = await supabase
@@ -100,17 +155,27 @@ export default {
   mounted() {
     console.log(store.user.id);
     this.consultarDashboard();
+    // this.idUnico();
   }, // Mounted hook (lifecycle)
-  watch:{
-    msg: function(){
-      this.$root.$emit("send", "hola")
-    }
+  watch: {
+    msg: function () {
+      this.$root.$emit("send", "hola");
+    },
   },
 };
 </script>
 
 <style scoped>
-*{
-    background-color: blueviolet;
+* {
+  background-color: blueviolet;
+}
+
+li {
+  list-style: none;
+}
+
+.column-red {
+  /* position: fixed; */
+  height: 100vh;
 }
 </style>

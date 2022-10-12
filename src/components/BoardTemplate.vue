@@ -6,43 +6,56 @@
     @drop.prevent="drop"
     :style="color"
   >
-    <h3>{{columnName}}</h3>
+    <h3>{{ columnName }}</h3>
     <!-- Columna -->
 
-        <!-- Add task -->
+    <!-- Add task -->
     <div class="mb-4 mt-1 add-task-btn border-0 border-bottom card-footer">
-      <button
+      <!-- <button
         class="me-1 mt-2 mb-2"
         data-bs-toggle="modal"
         data-bs-target="#addingTask"
       >
-        <span>Add Task <i class="far fa-plus-square"></i></span> 
-      </button>
+        <span>Add Task <i class="far fa-plus-square"></i></span>
+      </button> -->
     </div>
     <!-- End of add task -->
 
     <!-- {{double}} -->
     <slot />
-    <slot />
-
   </div>
 </template>
 
 <script>
+import { supabase } from "../supabase";
+
 export default {
-  props: ["id","columnName"],
+  props: ["id", "columnName", "idCard"],
   data() {
     return {};
   },
   methods: {
-    drop: (e) => {
-      const card_id = e.dataTransfer.getData("card_id");
+    drop: async (e) => {
+      const card_id = e.dataTransfer.getData("id");
 
       const card = document.getElementById(card_id);
 
       card.style.display = "block";
 
       e.target.appendChild(card);
+      console.log(card);
+      alert(card.parentNode.id);
+
+      // MODIFICACIÓN DE CARTA
+
+      const { data, error } = await supabase
+        .from("tasks")
+        .update({ statusTask: card.parentNode.id })
+        .eq("id", card_id);
+      console.log(error);
+    },
+    changeStatus(idStatus) {
+      console.log(idStatus);
     },
   },
 
@@ -70,7 +83,8 @@ export default {
 
 .column {
   min-width: 300px;
-  min-height: 100px;
+  min-height: 100vh;
+  max-width: 500px;
   height: 100%;
   padding: 30px;
   margin-left: 10px;
@@ -99,10 +113,9 @@ export default {
   background-color: #1ec49c;
   border: none;
   border-radius: 20px;
-  
 }
 
-.add-task-btn button i{
+.add-task-btn button i {
   color: white;
 }
 

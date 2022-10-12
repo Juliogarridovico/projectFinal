@@ -109,7 +109,7 @@ export default {
           usuarioID: this.store.user.id,
           tittle: this.taskTitle,
           comment: this.description,
-          statusTask: 3,
+          statusTask: 0,
         },
       ]);
     },
