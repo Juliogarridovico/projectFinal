@@ -44,7 +44,8 @@ export default {
 
       e.target.appendChild(card);
       console.log(card);
-      alert(card.parentNode.id);
+      
+      // alert(card.parentNode.id);
 
       // MODIFICACIÓN DE CARTA
 
