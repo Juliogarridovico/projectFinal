@@ -5,7 +5,7 @@
       <div class="col-md-5 p-lg-5 mx-auto my-5">
         <h1 class="display-4 font-weight-normal">Team #10</h1>
         <p class="lead font-weight-normal">Le presentamos nuestro proyecto</p>
-        <a class="btn btn-outline-light rounded-5" href="/auth" target="_blank">Your Porfile</a>
+        <a class="btn btn-outline-light rounded-5" href="/profile" >Your Porfile</a>
       </div>
   </div>
 
