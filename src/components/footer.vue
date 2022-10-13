@@ -70,7 +70,7 @@
           >
             <li class="list-inline-item" id="socialmedia" >
               <a
-                href="#"
+                href="https://discord.gg/RYgYdqUa"
                 class="btn-floating btn-sm text-white"
                 style="font-size: 20px"
               >
@@ -88,7 +88,7 @@
             </li>
             <li class="list-inline-item" id="socialmedia" >
               <a
-                href="twitter.com/tryllothecat"
+                href="https://twitter.com/tryllothecat"
                 class="btn-floating btn-sm text-white"
                 style="font-size: 20px"
               >

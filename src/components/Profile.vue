@@ -1,33 +1,6 @@
 <template>
-  <!-- <form class="form-widget" @submit.prevent="updateProfile">
-    <Avatar v-model:path="avatar_url" @upload="updateProfile" />
-    <div>
-      <label for="email">Email</label>
-      <input id="email" type="text" :value="store.user.email" disabled />
-    </div>
-    <div>
-      <label for="username">Name</label>
-      <input id="username" type="text" v-model="username" />
-    </div>
-    <div>
-      <label for="website">Website</label>
-      <input id="website" type="website" v-model="website" />
-    </div>
-    <div>
-      <input
-        type="submit"
-        class="button block primary"
-        :value="loading ? 'Loading ...' : 'Update'"
-        :disabled="loading"
-      />
-    </div>
-    <div>
-      <button class="button block btn btn-danger3" @click="signOut" :disabled="loading">
-        Sign Out
-      </button>
-    </div>
-  </form> -->
-  <div class="container">
+
+  <div class="container mb-4">
     <div class="row justify-content-center align-items-center row-style">
       <!-- Imagen -->
 
@@ -56,11 +29,7 @@
           class="base-form col-9 d-flex flex-column align-items-center rounded shadow p-3"
         >
           <div class="text-center mt-5 mb-4">
-            <!-- <img
-              src="../assets/images/logo-3.png"
-              class="rounded h-100 logo-form"
-              alt="Logo"
-            /> -->
+
              <Avatar v-model:path="avatar_url" @upload="updateProfile" />
           </div>
 
@@ -102,9 +71,9 @@
             SIGN OUT
           </button>
 
-          <div class="w-100 d-flex justify-content-end mt-2">
-            <a href="#" target="_blank" class="links-style mt-4 mb-4"
-              >Need Help?</a
+          <div class="btn btn-outline-success btn-dashboard rounded-5 w-75 mt-3">
+            <a href="/dashboard" target="_blank" class="links-style mt-4 mb-4"
+              >Go to the Dashboard!</a
             >
           </div>
         </div>
@@ -297,5 +266,19 @@ p {
   .bg-img-style img {
     width: 35%;
   }
+}
+
+.btn-dashboard{
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+.btn-dashboard:hover{
+  background-color: #1ec49c !important;
+  color: white !important;
+}
+.btn-dashboard a:hover{
+  
+  color: white !important;
 }
 </style>
