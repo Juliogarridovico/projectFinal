@@ -20,7 +20,7 @@
           <span>Add Task <i class="far fa-plus-square"></i></span>
         </button>
 
-        <input class="rounded-5 bg-light input-filter" v-model="search" type="text" placeholder="Seacrh tasks">
+        <input class="rounded-5 bg-light input-filter" v-model="search" type="text" placeholder="Search tasks">
 
         <hr />
       </div>

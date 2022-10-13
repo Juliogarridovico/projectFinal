@@ -14,8 +14,7 @@
         />
         <h3 class="text-center tryllo-cat-h3 mt-4 mb-4">Be a Tryllo Cat!</h3>
         <p class="tryllo-cat-p mt-4 mb-4">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione,
-          voluptates esse? Incidunt molestiae
+          No renuncies a tus sueños, sigue durmiendo
         </p>
       </div>
 
