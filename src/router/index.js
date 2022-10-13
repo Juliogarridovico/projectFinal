@@ -21,6 +21,7 @@ const routes = [
   { path: "/aboutus", component: () => import("../components/aboutus.vue") },
   { path: "/dashboard-two", component: () => import("../components/DashBoardTwo.vue") },
   { path: "/dashboard-three", component: () => import("../components/DashboardThree.vue") },
+  { path: "/:pathMatch(.*)*", component:  () => import("../components/HomePage.vue") },
   
 ];
 
