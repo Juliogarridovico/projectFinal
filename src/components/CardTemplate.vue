@@ -224,7 +224,7 @@ h4 {
 
 .card-title {
   color: #454749;
-  font-size: 17px;
+  font-size: 15px;
 }
 
 .subtitle {

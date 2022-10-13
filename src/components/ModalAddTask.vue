@@ -43,16 +43,16 @@
                 >
                   Save
                 </button>
-                <button
+                <!-- <button
                 
                   @click="modificarTask(taskTitle, description, tarea)"
                   class="col-12 btn btn-style btn-primary rounded-5 w-50 mt-3 mx-1"
                 >
                   test modificar
-                </button>
+                </button> -->
                 <button
                   data-bs-dismiss="modal"
-                  class="col-12 btn btn-style-cancel btn-danger rounded-5 w-50 mt-3 mx-1"
+                  class="col-12 btn btn-style-cancel btn-danger rounded-5 w-50 mt-3 mx-1 mb-3"
                 >
                   Cancel
                 </button>
