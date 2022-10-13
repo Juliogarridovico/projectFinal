@@ -146,7 +146,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 nav {
   background-image: linear-gradient(to right, #1ec49c, #65b6f7);
 }

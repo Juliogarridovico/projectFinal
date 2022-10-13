@@ -1,4 +1,4 @@
-<template>
+<template> 
   <div id="taskForm">
     <form>
       <input v-model="taskTitle" placeholder="Titulo de la tarea" />
@@ -22,7 +22,7 @@ import { store } from "../store";
 export default {
   name: "taskForm",
   props: {
-    tarea: false,
+    tareaInfo: false,
   }, // Props
   data() {
     return {
@@ -32,11 +32,7 @@ export default {
   }, // Data variables
   computed: {}, // Computed props
   methods: {
-    async borrarTask(taskTitle, mensaje, tarea) {
-      console.log(taskTitle);
-      console.log(mensaje);
-      console.log(tarea);
-      console.log("terea ejecutada");
+    async borrarTask() {
       const { data, error } = await supabase
         .from("tasks")
         .delete()
@@ -74,6 +70,9 @@ export default {
       store,
     };
   },
-  mounted() {}, // Mounted hook (lifecycle)
+  mounted() {
+    console.log("TEST DE LA VARIABLE")
+    console.log(tareaInfo)
+  }, // Mounted hook (lifecycle)
 };
 </script>
