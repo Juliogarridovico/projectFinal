@@ -1,7 +1,7 @@
 <template>
   <div
     :id="id"
-    class="board card col-10 col-lg-2 rounded-3 bg-white shadow column mx-4 mb-3"
+    class="board card col-10 col-lg-2 rounded-3 bg-white shadow column mx-4 mb-4"
     @dragover.prevent
     @drop.prevent="drop"
     :style="color"
@@ -44,7 +44,8 @@ export default {
 
       e.target.appendChild(card);
       console.log(card);
-      alert(card.parentNode.id);
+
+      // alert(card.parentNode.id);
 
       // MODIFICACIÓN DE CARTA
 
@@ -83,7 +84,7 @@ export default {
 
 .column {
   min-width: 300px;
-  min-height: 100vh;
+  min-height: 100px;
   max-width: 500px;
   height: 100%;
   padding: 30px;
@@ -94,6 +95,8 @@ export default {
   /* border: none;
   border-top: 5px  solid;
   border: #ce7ee1; */
+  border: none;
+  margin-bottom: 50px !important;
 }
 
 .column h3 {

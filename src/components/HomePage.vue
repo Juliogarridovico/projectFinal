@@ -1,21 +1,92 @@
 <template>
-    <br>
-<br>
-<br>
-<br>
+<main>
 
-home   <br>
-<br>
-<br>
-<br>
+ <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center  bg-imgae-home">
+      <div class="col-md-5 p-lg-5 mx-auto my-5">
+        <h1 class="display-4 font-weight-normal">Team #10</h1>
+        <p class="lead font-weight-normal">Le presentamos nuestro proyecto</p>
+        <a class="btn btn-outline-light rounded-5" href="/auth" target="_blank">Your Porfile</a>
+      </div>
+  </div>
 
-    home
+  <!-- Articles -->
+
+       <div class="row justify-content-center articles">
+          <div class="col-lg-3 text-center">
+            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2>Gema</h2>
+            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+            <p><a class="btn btn-success rounded-5 btn-details" href="#" role="button">Detalles &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-3 text-center">
+            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2>Julio</h2>
+            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+            <p><a class="btn btn-success rounded-5 btn-details" href="#" role="button">Detalles &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-3 text-center">
+            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2>Robert</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p><a class="btn btn-success rounded-5 btn-details" href="#" role="button">Detalles &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+
+   
+</main>
 </template>
 <script>
 
 </script>
-<style >
-*{
-      color: black;
-    }
+<style scoped>
+.site-header {
+  background-color: rgba(0, 0, 0, .85);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+.site-header a {
+  color: #999;
+  transition: ease-in-out color .15s;
+}
+.site-header a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.bg-imgae-home{
+    background-image: url("../assets/images/bg-app-hero.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Nosotros  */
+
+.marketing .col-lg-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: 400;
+}
+.marketing .col-lg-4 p {
+  margin-right: .75rem;
+  margin-left: .75rem;
+}
+
+.articles{
+margin-top: 60px;
+}
+.articles img{
+margin-bottom: 20px;
+}
+
+ .articles h2, .articles p{
+  color: #787796;
+}
+
+.btn-details{
+  background-color: #1ec49c;
+  border: none;
+}
+
 </style>

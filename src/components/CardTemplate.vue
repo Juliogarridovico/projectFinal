@@ -14,7 +14,6 @@
             title="edit Task"
             data-bs-toggle="modal"
             data-bs-target="#editTask"
-            
           >
             <i class="far fa-edit"></i>
           </button>
@@ -36,16 +35,20 @@
             Backlog
           </button>
           <button
-             @click="toDoMove(tareaInfo.id)"
+            @click="toDoMove(tareaInfo.id)"
             class="btn-column btn-column-2 btn btn-success rounded-5 mb-2 ms-1"
           >
             To Do
           </button>
           <br />
-          <button class="btn-column btn-column-3 btn btn-success rounded-5">
+          <button
+            @click="doingMove(tareaInfo.id)"
+            class="btn-column btn-column-3 btn btn-success rounded-5"
+          >
             Doing
           </button>
           <button
+            @click="doneMove(tareaInfo.id)"
             class="btn-column btn-column-4 btn btn-success rounded-5 ms-1"
           >
             Done
@@ -77,9 +80,11 @@
               <i class="fas fa-plus-circle"></i>
             </button>
 
+            <!-- BORRAR TASK -->
             <button
               type="button"
               title="Erase Task"
+              @click="erraseTask(tareaInfo.id)"
               class="btn ms-0 rounded btn-style-card-right"
             >
               <i class="fas fa-trash-alt"></i>
@@ -88,20 +93,17 @@
         </div>
       </div>
     </div>
-    <slot>
-    </slot>
+    <slot> </slot>
   </div>
 </template>
 
 <script>
-
 import { supabase } from "../supabase";
 import { store } from "../store";
 
-
-const refresh = () =>{
-  location.reload()
-}
+const refresh = () => {
+  location.reload();
+};
 
 export default {
   props: ["id", "draggable", "tareaInfo"],
@@ -111,44 +113,68 @@ export default {
 
       e.dataTransfer.setData("id", target.id);
 
-      // setTimeout(()=>{
-      //     target.style.display='none'
-      // }, 0)
 
-      console.log("ID DE LA CARD"+target.id);
+      console.log("ID DE LA CARD " + target.id);
     },
-    backlogMove: async(tareaID) =>{
-      console.log(tareaID)
+    backlogMove: async (tareaID) => {
+      console.log(tareaID);
 
       const { data, error } = await supabase
         .from("tasks")
-        .update({ statusTask: 0})
-        .eq("id",tareaID);
-        console.log(error)
-        refresh()
+        .update({ statusTask: 0 })
+        .eq("id", tareaID);
+      console.log(error);
+      refresh();
     },
-    toDoMove: async(tareaID) =>{
-      console.log(tareaID)
+
+    toDoMove: async (tareaID) => {
+      console.log(tareaID);
 
       const { data, error } = await supabase
         .from("tasks")
-        .update({ statusTask: 1})
-        .eq("id",tareaID);
-        console.log(error)
-        refresh()
+        .update({ statusTask: 1 })
+        .eq("id", tareaID);
+      console.log(error);
+      refresh();
     },
 
-    refreshDashboard () {
-      console.log("METODO REFRESH")
-    }
+    doingMove: async (tareaID) => {
+      console.log(tareaID);
+
+      const { data, error } = await supabase
+        .from("tasks")
+        .update({ statusTask: 2 })
+        .eq("id", tareaID);
+      console.log(error);
+      refresh();
+    },
+    doneMove: async (tareaID) => {
+      console.log(tareaID);
+
+      const { data, error } = await supabase
+        .from("tasks")
+        .update({ statusTask: 3 })
+        .eq("id", tareaID);
+      console.log(error);
+      refresh();
+       
+    },
+
+    async erraseTask(tareaID) {
+       const { data, error } = await supabase
+        .from("tasks")
+        .delete()
+        .eq("id", tareaID);
+        
+        const card = document.getElementById(tareaID);
+        card.style.display = "none";
+    },
 
   },
-  computed: {
-     
-  },
-  mounted(){
+  computed: {},
+  mounted() {
     // this.refreshDashboard()
-  }
+  },
 };
 </script>
 
@@ -198,7 +224,7 @@ h4 {
 
 .card-title {
   color: #454749;
-  font-size: 17px;
+  font-size: 15px;
 }
 
 .subtitle {
